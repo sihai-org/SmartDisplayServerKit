@@ -17,5 +17,5 @@ class Singleton(ABC):
     def get(cls) -> Self:
         instance = cls._instance
         if instance is None:
-            raise Exception(f"{cls.__name__} has not been initialized")
+            raise RuntimeError(f"{cls.__name__} has not been initialized")
         return instance
