@@ -17,8 +17,8 @@ class SingletonTestCase(unittest.IsolatedAsyncioTestCase):
 
         await Database.init(10)
         await Database.init(20)
-        db1 = Database.get()
-        db2 = Database.get()
+        db1 = Database.instance()
+        db2 = Database.instance()
         self.assertIs(db1, db2)
         self.assertEqual(db1.age, db2.age)
         self.assertEqual(db2.age, 10)

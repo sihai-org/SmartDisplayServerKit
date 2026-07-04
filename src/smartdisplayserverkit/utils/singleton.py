@@ -14,7 +14,7 @@ class Singleton(ABC):
                 cls._instance = new_instance
 
     @classmethod
-    def get(cls) -> Self:
+    def instance(cls) -> Self:
         instance = cls._instance
         if instance is None:
             raise RuntimeError(f"{cls.__name__} has not been initialized")
