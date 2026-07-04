@@ -1,13 +1,13 @@
 import unittest
 from dataclasses import dataclass
 
-from smartdisplayserverkit.utils.singleton import Singleton
+from smartdisplayserverkit.utils.singleton import SingletonAsync
 
 
 class SingletonTestCase(unittest.IsolatedAsyncioTestCase):
     async def test_singleton(self):
         @dataclass(slots=True, frozen=True)
-        class Database(Singleton):
+        class Database(SingletonAsync):
             age: int
 
             @classmethod

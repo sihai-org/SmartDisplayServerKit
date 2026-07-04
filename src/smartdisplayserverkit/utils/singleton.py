@@ -1,11 +1,16 @@
 import asyncio
-from abc import ABC
-from typing import ClassVar, Self
+from abc import ABC, abstractmethod
+from typing import Any, ClassVar, Self
 
 
-class Singleton(ABC):
+class SingletonAsync(ABC):
     _instance: ClassVar[Self | None] = None
     _lock: ClassVar[asyncio.Lock] = asyncio.Lock()
+
+    @classmethod
+    @abstractmethod
+    async def init(cls, *args: Any, **kwargs: Any) -> None:
+        raise NotImplementedError
 
     @classmethod
     async def _set_instance(cls, new_instance: Self) -> None:
