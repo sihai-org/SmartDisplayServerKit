@@ -17,6 +17,8 @@ class SingletonAsync(ABC):
         async with cls._lock:
             if cls._instance is None:
                 cls._instance = new_instance
+            else:
+                raise RuntimeError(f"{cls.__name__} has been initialized")
 
     @classmethod
     def instance(cls) -> Self:

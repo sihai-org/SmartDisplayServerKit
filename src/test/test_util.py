@@ -16,7 +16,6 @@ class SingletonTestCase(unittest.IsolatedAsyncioTestCase):
                 await super()._set_instance(instance)
 
         await Database.init(10)
-        await Database.init(20)
         db1 = Database.instance()
         db2 = Database.instance()
         self.assertIs(db1, db2)
